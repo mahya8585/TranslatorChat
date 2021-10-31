@@ -12,12 +12,12 @@ function setConnected(connected) {
 }
 
 function connect() {
-  var socket = new SockJS('/websocket'); // WebSocket通信開始
+  var socket = new SockJS('/websocket');
   stompClient = Stomp.over(socket);
   stompClient.connect({}, function (frame) {
     setConnected(true);
     console.log('Connected: ' + frame);
-    // /receive/messageエンドポイントでメッセージを受信し、表示する
+    // /receive/messageでメッセージ受信&表示
     stompClient.subscribe('/receive/message', function (response) {
       showMessage(JSON.parse(response.body));
     });

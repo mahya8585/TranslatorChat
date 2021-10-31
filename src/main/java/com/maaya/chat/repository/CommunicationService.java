@@ -1,6 +1,5 @@
 package com.maaya.chat.repository;
 
-import com.azure.communication.chat.ChatClient;
 import com.azure.communication.chat.ChatClientBuilder;
 import com.azure.communication.chat.ChatThreadClient;
 import com.azure.communication.chat.models.ChatMessageType;

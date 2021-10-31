@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.maaya.chat.Configuration.LOCATION;
+import static com.maaya.chat.Configuration.SUBSCRIPTION_KEY;
+
 public class Translator {
     //TODO user1が来たら日本語 -> 英語, user2が来たら英語->日本語の翻訳を行う
-
-    private static final String SUBSCRIPTION_KEY = "d02e818577ac464d9dc23f324933bc2f";
-    private static final String LOCATION = "japaneast";
 
     // This function performs a POST request.
     public String post(String message, String fromLanguage, String toLanguage) throws IOException {

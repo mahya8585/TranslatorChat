@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <title>デモユーザ選択</title>
+</head>
+<body>
+    <p>
+        <label>チャットを利用するユーザを選択してください</label>
+    </p>
+    <p>
+        <select id="username" name="username">
+            <option value="maaya">[EN]maaya</option>
+            <option value="まーや">[JA]まーや</option>
+        </select>
+    </p>
+    <p>
+        <button id="move" type="submit">チャットルームへ</button>
+    </p>
+
+<script>
+$(function () {
+  $("#move").click(function () {
+    document.location.href = "/chat?user=" + $("#username").val();
+  });
+});
+</script>
+</body>
+</html>

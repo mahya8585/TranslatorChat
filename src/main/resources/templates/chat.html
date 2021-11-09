@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>翻訳チャット</title>
@@ -18,8 +18,8 @@
 </div>
 <form class="form-inline">
     <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="なまえ">
+        <label for="name">Name: </label>
+        <label id="name" th:text ="${username}" th:value="${username}">あなた</label>
     </div>
     <div class="form-group">
         <label for="name">メッセージ</label>
@@ -31,5 +31,6 @@
     <tbody id="message">
     </tbody>
 </table>
+
 </body>
 </html>

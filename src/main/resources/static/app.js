@@ -59,6 +59,16 @@ $(function () {
     sendMessage();
   });
 
+//過去メッセージのやり取り情報を取得
+  var request = new XMLHttpRequest();
+    request.open("GET", "/history", true);
+    request.onload = function(){
+      const messageJson = JSON.parse(request.response);
+      messageJson.historyMessages.reverse().forEach(function(hmessage){
+        $("#history").append("<tr><td>" + hmessage + "</td></tr>");
+      });
+    }
+    request.send();
 });
 
 setTimeout("connect()", 3000);

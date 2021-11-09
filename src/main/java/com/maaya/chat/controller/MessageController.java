@@ -1,13 +1,17 @@
 package com.maaya.chat.controller;
 
+import com.maaya.chat.data.HistoryMessages;
 import com.maaya.chat.data.Message;
+import com.maaya.chat.repository.CommunicationService;
 import com.maaya.chat.repository.Translator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
+
 
 @Controller
 public class MessageController {
@@ -19,6 +23,7 @@ public class MessageController {
 //        Thread.sleep(1000);
 
         String name = message.getName();
+        String receiveMessage = message.getStatement();
         String toLanguage = "";
         String fromLanguage = "";
 
@@ -38,7 +43,14 @@ public class MessageController {
             toLanguage = "en";
             fromLanguage = "ja";
         }
-        String translatedMessage = new Translator().createTranslatedMessage(message.getStatement(), fromLanguage, toLanguage);
-        return new Message(HtmlUtils.htmlEscape(message.getName()), HtmlUtils.htmlEscape(message.getStatement() + " (" + translatedMessage + " )"));
+        String translatedMessage = new Translator().createTranslatedMessage(receiveMessage, fromLanguage, toLanguage);
+
+        String sendMessage = receiveMessage + " (" + translatedMessage + ")";
+
+        //communication serviceへデータ登録
+        CommunicationService communicationService = new CommunicationService();
+        communicationService.SendChatMessageForACS(name, sendMessage);
+
+        return new Message(HtmlUtils.htmlEscape(name), HtmlUtils.htmlEscape(sendMessage));
     }
 }

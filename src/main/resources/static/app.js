@@ -58,6 +58,7 @@ $(function () {
   $("#send").click(function () {
     sendMessage();
   });
+
 });
 
 setTimeout("connect()", 3000);

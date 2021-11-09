@@ -39,6 +39,6 @@ public class MessageController {
             fromLanguage = "ja";
         }
         String translatedMessage = new Translator().createTranslatedMessage(message.getStatement(), fromLanguage, toLanguage);
-        return new Message(HtmlUtils.htmlEscape(message.getName()), HtmlUtils.htmlEscape(translatedMessage));
+        return new Message(HtmlUtils.htmlEscape(message.getName()), HtmlUtils.htmlEscape(message.getStatement() + " (" + translatedMessage + " )"));
     }
 }

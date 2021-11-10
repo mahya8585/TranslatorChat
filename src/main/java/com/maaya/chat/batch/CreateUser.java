@@ -39,5 +39,8 @@ public class CreateUser {
         OffsetDateTime expiresAtUser2 = accessTokenUser2.getExpiresAt();
         System.out.println("user2's Id: " + user2.getId());
         System.out.println("user2 access token expire at: " + expiresAtUser2);
+
+        //TODO ユーザIDをアプリ用DBに保存する
+        //TODO ユーザの使用言語をアプリ用DBに保存する
     }
 }

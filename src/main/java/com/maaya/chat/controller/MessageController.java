@@ -1,12 +1,10 @@
 package com.maaya.chat.controller;
 
-import com.maaya.chat.data.HistoryMessages;
 import com.maaya.chat.data.Message;
 import com.maaya.chat.repository.CommunicationService;
 import com.maaya.chat.repository.Translator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
